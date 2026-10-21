@@ -13,6 +13,7 @@ export default function Login() {
     // Demo login: Email: admin@srinav.com | Password: 123456
     if (email === "admin@srinav.com" && password === "123456") {
       localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("userName", email.split('@')[0]); 
       navigate("/"); // Login successful, go to home page
     } else {
       setError("Invalid email or password!");
