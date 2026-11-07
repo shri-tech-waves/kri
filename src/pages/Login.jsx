@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import PageTitle from "../components/PageTitle"; // Import PageTitle for accessibility
 import "./Login.css";
 
-export default function Login() {
+export default function Login({ title }) { // Accept title prop from App.jsx
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState("");
@@ -34,27 +35,57 @@ export default function Login() {
 
   return (
     <div className="login-container">
+      
+      {/* Page Title for Screen Reader */}
+      <PageTitle title={title} />
+      
       <div className="login-box">
-        <h2>Sri Nav Tech</h2>
+        {/* Changed h2 to h1 for main heading accessibility */}
+        <h1>Sri Nav Tech Login</h1>
         <p>Admin Login</p>
 
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleLogin} aria-busy={status === "Logging in..."}>
           <div className="input-group">
             <label htmlFor="loginEmail">Email</label>
-            <input id="loginEmail" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="Enter your email" />
+            <input 
+              id="loginEmail" 
+              type="email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              required 
+              placeholder="Enter your email" 
+            />
           </div>
+          
           <div className="input-group">
             <label htmlFor="loginPassword">Password</label>
-            <input id="loginPassword" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="Enter your password" />
+            <input 
+              id="loginPassword" 
+              type="password" 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)} 
+              required 
+              placeholder="Enter your password" 
+            />
           </div>
+          
           <div style={{ textAlign: "right", marginBottom: "1rem" }}>
-            <Link to="/forgot-password" style={{ fontSize: "0.85rem", color: "#1e3a8a", textDecoration: "underline" }}>Forgot Password?</Link>
+            <Link to="/forgot-password" style={{ fontSize: "0.85rem", color: "#1e3a8a", textDecoration: "underline" }}>
+              Forgot Password?
+            </Link>
           </div>
+          
           <button type="submit" className="login-btn">Login</button>
         </form>
 
-        <div aria-live="polite" style={{ marginTop: "1rem", color: "red", fontWeight: "bold" }}>{status}</div>
-        <p style={{ marginTop: "1rem" }}>New here? <Link to="/signup">Create an account</Link></p>
+        {/* Live region for screen reader announcements */}
+        <div aria-live="polite" style={{ marginTop: "1rem", color: "red", fontWeight: "bold" }}>
+          {status}
+        </div>
+        
+        <p style={{ marginTop: "1rem" }}>
+          New here? <Link to="/signup">Create an account</Link>
+        </p>
       </div>
     </div>
   );
