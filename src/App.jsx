@@ -11,9 +11,10 @@ import "./App.css";
 function App() {
   return (
     <BrowserRouter>
+      {/* Main Navigation Bar */}
       <Navbar />
       
-      {/* Hidden Announcer: NVDA isko padhega jab page change hoga */}
+      {/* Hidden Live Region: Screen readers announce page changes here */}
       <div 
         id="page-announcer" 
         aria-live="polite" 
@@ -21,7 +22,7 @@ function App() {
       </div>
 
       <Routes>
-        {/* Har page par title prop pass karein */}
+        {/* Passing title prop to each page for accessibility (Screen Reader) */}
         <Route path="/" element={<Home title="Home" />} />
         <Route path="/login" element={<Login title="Login" />} />
         <Route path="/signup" element={<Signup title="Sign Up" />} />

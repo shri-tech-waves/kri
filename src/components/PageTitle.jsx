@@ -5,10 +5,10 @@ export default function PageTitle({ title }) {
   const location = useLocation();
 
   useEffect(() => {
-    // Browser tab ka title change karein
+    // 1. Update the browser tab title for visual users
     document.title = `${title} - Sri Nav Tech`;
     
-    // Screen reader ko live announce karne ke liye (optional but helpful)
+    // 2. Announce the page title for screen reader users
     const announceTitle = () => {
       const announcer = document.getElementById("page-announcer");
       if (announcer) {
@@ -16,10 +16,10 @@ export default function PageTitle({ title }) {
       }
     };
     
-    // Thoda delay taaki DOM update ho jaye
+    // Add a slight delay to ensure the DOM has updated before announcing
     setTimeout(announceTitle, 100);
 
-  }, [location.pathname, title]); // Jab bhi URL ya title change ho, ye chalega
+  }, [location.pathname, title]); // Re-run effect whenever the route or title changes
 
-  return null; // Ye screen par kuch nahi dikhata
+  return null; // This component does not render anything visually
 }
