@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import PageTitle from "../components/PageTitle"; // Import PageTitle for accessibility
+import PageTitle from "../components/PageTitle"; 
 
-export default function ForgotPassword({ title }) { // Accept title prop from App.jsx
+export default function ForgotPassword({ title }) { 
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("");
 
@@ -11,7 +11,8 @@ export default function ForgotPassword({ title }) { // Accept title prop from Ap
     setStatus("Sending reset link...");
 
     try {
-      const response = await fetch("http://localhost:5000/api/forgot-password", {
+      // Updated URL for Render backend
+      const response = await fetch("https://sri-nav-tech-backend.onrender.com/api/forgot-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -30,11 +31,7 @@ export default function ForgotPassword({ title }) { // Accept title prop from Ap
 
   return (
     <div style={{ maxWidth: "400px", margin: "5rem auto", padding: "2rem", border: "1px solid #ccc", borderRadius: "10px" }}>
-      
-      {/* Page Title for Screen Reader */}
       <PageTitle title={title} />
-      
-      {/* Changed h2 to h1 for main heading accessibility */}
       <h1>Forgot Password</h1>
       <p>Enter your registered email to receive a reset link.</p>
       
@@ -42,25 +39,16 @@ export default function ForgotPassword({ title }) { // Accept title prop from Ap
         <div className="input-group">
           <label htmlFor="resetEmail">Email</label>
           <input 
-            id="resetEmail" 
-            type="email" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            required 
-            placeholder="Enter your registered email" 
-            style={{ width: "100%", padding: "0.75rem", borderRadius: "5px", border: "1px solid #ccc" }} 
+            id="resetEmail" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required 
+            placeholder="Enter your registered email" style={{ width: "100%", padding: "0.75rem", borderRadius: "5px", border: "1px solid #ccc" }} 
           />
         </div>
         
-        <button 
-          type="submit" 
-          style={{ padding: "0.75rem", background: "#1e3a8a", color: "white", border: "none", borderRadius: "5px", cursor: "pointer", fontWeight: "bold" }}
-        >
+        <button type="submit" style={{ padding: "0.75rem", background: "#1e3a8a", color: "white", border: "none", borderRadius: "5px", cursor: "pointer", fontWeight: "bold" }}>
           Send Reset Link
         </button>
       </form>
 
-      {/* Live region for screen reader announcements */}
       <div aria-live="polite" style={{ marginTop: "1rem", color: status.includes("✅") ? "green" : "red", fontWeight: "bold" }}>
         {status}
       </div>

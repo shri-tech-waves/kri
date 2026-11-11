@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import PageTitle from "../components/PageTitle"; // Import PageTitle for accessibility
+import PageTitle from "../components/PageTitle"; 
 import "./Login.css";
 
-export default function Login({ title }) { // Accept title prop from App.jsx
+export default function Login({ title }) { 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState("");
@@ -14,7 +14,8 @@ export default function Login({ title }) { // Accept title prop from App.jsx
     setStatus("Logging in...");
 
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
+      // Updated URL for Render backend
+      const response = await fetch("https://sri-nav-tech-backend.onrender.com/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -35,12 +36,8 @@ export default function Login({ title }) { // Accept title prop from App.jsx
 
   return (
     <div className="login-container">
-      
-      {/* Page Title for Screen Reader */}
       <PageTitle title={title} />
-      
       <div className="login-box">
-        {/* Changed h2 to h1 for main heading accessibility */}
         <h1>Sri Nav Tech Login</h1>
         <p>Admin Login</p>
 
@@ -78,7 +75,6 @@ export default function Login({ title }) { // Accept title prop from App.jsx
           <button type="submit" className="login-btn">Login</button>
         </form>
 
-        {/* Live region for screen reader announcements */}
         <div aria-live="polite" style={{ marginTop: "1rem", color: "red", fontWeight: "bold" }}>
           {status}
         </div>
