@@ -5,15 +5,6 @@ export default function Navbar() {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const userName = localStorage.getItem("userName") || "User";
 
-  // Function to get greeting based on the current time
-  const getGreeting = () => {
-    const hour = new Date().getHours();
-    if (hour < 12) return "Good Morning";
-    if (hour < 17) return "Good Afternoon";
-    return "Good Evening";
-  };
-
-  // Function to handle user logout
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userName");
@@ -21,39 +12,46 @@ export default function Navbar() {
   };
 
   return (
-    <nav style={{ display: "flex", justifyContent: "space-between", padding: "1rem 2rem", background: "#1e293b", color: "white", alignItems: "center", flexWrap: "wrap" }}>
+    <nav style={{ 
+      display: "flex", 
+      justifyContent: "space-between", 
+      padding: "1rem 5%", 
+      background: "#ffffff", 
+      color: "#1e293b", 
+      alignItems: "center", 
+      flexWrap: "wrap",
+      boxShadow: "0 4px 6px -1px rgba(0,0,0,0.05)",
+      position: "sticky",
+      top: 0,
+      zIndex: 100
+    }}>
       
-      {/* Left Section: Company Logo and Greeting */}
-      <div>
-        <Link to="/" style={{ fontWeight: "bold", fontSize: "1.2rem", color: "#38bdf8", textDecoration: "none" }}>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <Link to="/" style={{ fontWeight: "800", fontSize: "1.5rem", color: "#2563eb", textDecoration: "none", letterSpacing: "-0.5px" }}>
           Sri Nav Tech
         </Link>
-        
-        {/* Show greeting only if the user is logged in */}
         {isLoggedIn && (
-          <span style={{ marginLeft: "1rem", fontSize: "0.9rem", color: "#cbd5e1" }}>
-            {getGreeting()}, {userName}! 👋
+          <span style={{ marginLeft: "1rem", fontSize: "0.9rem", color: "#64748b", background: "#f1f5f9", padding: "0.25rem 0.75rem", borderRadius: "20px" }}>
+            Hi, {userName}
           </span>
         )}
       </div>
       
-      {/* Right Section: Navigation Links and Login/Logout Button */}
-      <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
-        <Link to="/" style={{ color: "white", textDecoration: "none" }}>Home</Link>
-        <Link to="/contact" style={{ color: "white", textDecoration: "none" }}>Contact Us</Link>
+      <div style={{ display: "flex", gap: "2rem", alignItems: "center", fontWeight: "500", fontSize: "0.95rem" }}>
+        <Link to="/" style={{ color: "#475569", textDecoration: "none" }}>Home</Link>
+        <Link to="/contact" style={{ color: "#475569", textDecoration: "none" }}>Contact Us</Link>
         
-        {/* Conditional Rendering for Login/Logout */}
         {isLoggedIn ? (
           <button 
             onClick={handleLogout}
-            style={{ padding: "0.4rem 1rem", background: "#ef4444", color: "white", border: "none", borderRadius: "5px", cursor: "pointer", fontWeight: "bold" }}
+            style={{ padding: "0.5rem 1.2rem", background: "#fef2f2", color: "#ef4444", border: "1px solid #fecaca", borderRadius: "6px", cursor: "pointer", fontWeight: "600" }}
           >
             Logout
           </button>
         ) : (
           <Link 
             to="/login" 
-            style={{ padding: "0.4rem 1rem", background: "#38bdf8", color: "#0f172a", textDecoration: "none", borderRadius: "5px", fontWeight: "bold" }}
+            style={{ padding: "0.5rem 1.2rem", background: "#2563eb", color: "white", textDecoration: "none", borderRadius: "6px", fontWeight: "600", boxShadow: "0 2px 4px rgba(37,99,235,0.2)" }}
           >
             Login
           </Link>

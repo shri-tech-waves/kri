@@ -1,80 +1,89 @@
-import PageTitle from "../components/PageTitle"; // Import PageTitle for accessibility
-import "./Home.css";
+import PageTitle from "../components/PageTitle";
+import "./Home.css"; // Keep this for the background
 
-export default function Home({ title }) { // Accept title prop from App.jsx
+export default function Home({ title }) {
   return (
-    <div className="app">
-      
-      {/* Page Title for Screen Reader */}
+    <div style={{ fontFamily: "'Inter', 'Segoe UI', sans-serif" }}>
       <PageTitle title={title} />
       
-      <header className="hero">
-        {/* Added tabIndex="-1" so screen reader focuses on this heading first */}
-        <h1 tabIndex="-1">Sri Nav Tech Private Limited</h1>
-        <p>Corporate Services Portfolio & Capability Statement</p>
-        <p className="subtitle">Operational Launch: Gujarat, India</p>
+      {/* ===== HERO SECTION ===== */}
+      <header style={{
+        background: "linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)",
+        color: "white",
+        padding: "8rem 5%",
+        textAlign: "center"
+      }}>
+        <h1 style={{ fontSize: "3rem", fontWeight: "800", marginBottom: "1rem", letterSpacing: "-1px" }}>
+          Sri Nav Tech Private Limited
+        </h1>
+        <p style={{ fontSize: "1.2rem", opacity: "0.9", maxWidth: "700px", margin: "0 auto 2rem auto" }}>
+          Multi-disciplinary technology and engineering solutions provider. We accelerate digital transformation and optimize corporate infrastructure.
+        </p>
+        <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
+          <a href="#services" style={{ padding: "0.8rem 2rem", background: "white", color: "#1e3a8a", textDecoration: "none", borderRadius: "8px", fontWeight: "bold", fontSize: "1.1rem" }}>
+            Explore Services
+          </a>
+          <a href="/contact" style={{ padding: "0.8rem 2rem", background: "transparent", border: "2px solid white", color: "white", textDecoration: "none", borderRadius: "8px", fontWeight: "bold", fontSize: "1.1rem" }}>
+            Contact Us
+          </a>
+        </div>
       </header>
 
-      <section className="intro" aria-label="Company Introduction">
-        <p>Welcome to Sri Nav Tech Private Limited. Established as a multi-disciplinary technology and engineering solutions provider in Gujarat, India, we offer an expansive suite of high-performance capabilities designed to accelerate digital transformation, optimize corporate infrastructure, and engineer precise functional products.</p>
-        <p>Our expert teams bring together robust software frameworks, exhaustive quality assurance metrics, creative digital media standards, and structural engineering expertise to drive measurable value for your enterprise.</p>
+      {/* ===== INTRO SECTION ===== */}
+      <section style={{ padding: "5rem 5%", maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
+        <h2 style={{ fontSize: "2rem", color: "#1e293b", marginBottom: "1.5rem" }}>Welcome to Sri Nav Tech</h2>
+        <p style={{ fontSize: "1.1rem", color: "#475569", lineHeight: "1.8", marginBottom: "1rem" }}>
+          Established in Gujarat, India, we offer an expansive suite of high-performance capabilities designed to engineer precise functional products.
+        </p>
+        <p style={{ fontSize: "1.1rem", color: "#475569", lineHeight: "1.8" }}>
+          Our expert teams bring together robust software frameworks, exhaustive quality assurance metrics, and structural engineering expertise to drive measurable value for your enterprise.
+        </p>
       </section>
 
-      <section className="services" aria-label="Core Services">
-        <h2>Core Service Offerings</h2>
+      {/* ===== SERVICES SECTION ===== */}
+      <section id="services" style={{ padding: "5rem 5%", background: "#f8fafc" }}>
+        <h2 style={{ fontSize: "2.5rem", color: "#1e293b", textAlign: "center", marginBottom: "3rem" }}>Core Service Offerings</h2>
         
-        <div className="service-card" aria-labelledby="service1-title">
-          <h3 id="service1-title">1. Software & Application Development</h3>
-          <h4>Web Development</h4>
-          <p>End-to-end engineering of highly secure, scalable, and responsive web platforms optimized for complex enterprise ecosystems and seamless cloud integrations.</p>
-          <h4>Application Development</h4>
-          <p>Design and deployment of native, hybrid, and cross-platform mobile and desktop applications tailored to deliver intuitive user interfaces and robust performance.</p>
-        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem", maxWidth: "1200px", margin: "0 auto" }}>
+          
+          {/* Service Card 1 */}
+          <div style={{ background: "white", padding: "2rem", borderRadius: "12px", boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)", borderTop: "4px solid #3b82f6" }}>
+            <h3 style={{ fontSize: "1.3rem", color: "#1e293b", marginBottom: "1rem" }}>1. Software Development</h3>
+            <p style={{ color: "#64748b", fontSize: "0.95rem", lineHeight: "1.6" }}>End-to-end engineering of highly secure, scalable web platforms and native/cross-platform mobile applications.</p>
+          </div>
 
-        <div className="service-card" aria-labelledby="service2-title">
-          <h3 id="service2-title">2. Comprehensive Testing & Quality Assurance</h3>
-          <h4>Web, Software, & Application Testing</h4>
-          <p>Rigorous multi-tiered validation cycles spanning functional testing, regression testing, load testing, and security auditing across all software environments.</p>
-          <h4>Accessibility Testing (WCAG Compliance)</h4>
-          <p>Comprehensive digital accessibility evaluations ensuring your applications, platforms, and legal documentation strictly adhere to the latest Web Content Accessibility Guidelines (WCAG) criteria.</p>
-        </div>
+          {/* Service Card 2 */}
+          <div style={{ background: "white", padding: "2rem", borderRadius: "12px", boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)", borderTop: "4px solid #10b981" }}>
+            <h3 style={{ fontSize: "1.3rem", color: "#1e293b", marginBottom: "1rem" }}>2. Quality Assurance</h3>
+            <p style={{ color: "#64748b", fontSize: "0.95rem", lineHeight: "1.6" }}>Rigorous multi-tiered validation cycles, security auditing, and comprehensive WCAG digital accessibility evaluations.</p>
+          </div>
 
-        <div className="service-card" aria-labelledby="service3-title">
-          <h3 id="service3-title">3. Data Intelligence & Enterprise Infrastructure</h3>
-          <h4>Data Analytics</h4>
-          <p>Transforming raw organizational data into actionable strategic intelligence through advanced reporting models, predictive analytics, and clear visualization.</p>
-          <h4>CRM Support Services</h4>
-          <p>Seamless deployment, configuration, customization, and continuous operational support for major Customer Relationship Management platforms to align sales, marketing, and operations.</p>
-          <h4>Telecommunication Services</h4>
-          <p>Engineering and optimization of high-availability network frameworks, unified communication protocols, and tailored telecom systems infrastructure.</p>
-        </div>
+          {/* Service Card 3 */}
+          <div style={{ background: "white", padding: "2rem", borderRadius: "12px", boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)", borderTop: "4px solid #8b5cf6" }}>
+            <h3 style={{ fontSize: "1.3rem", color: "#1e293b", marginBottom: "1rem" }}>3. Data & Infrastructure</h3>
+            <p style={{ color: "#64748b", fontSize: "0.95rem", lineHeight: "1.6" }}>Transforming raw data into strategic intelligence, CRM support services, and telecommunication network optimization.</p>
+          </div>
+          
+          {/* Service Card 4 */}
+          <div style={{ background: "white", padding: "2rem", borderRadius: "12px", boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)", borderTop: "4px solid #f59e0b" }}>
+            <h3 style={{ fontSize: "1.3rem", color: "#1e293b", marginBottom: "1rem" }}>4. Digital Media Solutions</h3>
+            <p style={{ color: "#64748b", fontSize: "0.95rem", lineHeight: "1.6" }}>Professional corporate documentation, technical editing, and complete social media management with video production.</p>
+          </div>
 
-        <div className="service-card" aria-labelledby="service4-title">
-          <h3 id="service4-title">4. Technical Content & Digital Media Solutions</h3>
-          <h4>Documentation and Editing</h4>
-          <p>Professional corporate blueprint writing, comprehensive system document compilation, user manuals, and detailed editing services for publishing-ready technical collateral.</p>
-          <h4>Social Media Management (with Video & Audio Production)</h4>
-          <p>Complete brand channel strategy execution, engagement monitoring, and multi-platform growth orchestration, backed by studio-grade, professional-tier video and audio editing.</p>
-        </div>
+          {/* Service Card 5 */}
+          <div style={{ background: "white", padding: "2rem", borderRadius: "12px", boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)", borderTop: "4px solid #ef4444" }}>
+            <h3 style={{ fontSize: "1.3rem", color: "#1e293b", marginBottom: "1rem" }}>5. Engineering & Design</h3>
+            <p style={{ color: "#64748b", fontSize: "0.95rem", lineHeight: "1.6" }}>High-precision CAD modeling, mechanical design, structural analysis, and ergonomic usability engineering.</p>
+          </div>
 
-        <div className="service-card" aria-labelledby="service5-title">
-          <h3 id="service5-title">5. Engineering & Design Services</h3>
-          <h4>Mechanical Design</h4>
-          <p>High-precision geometric modeling, CAD drafting, component detailing, and computer-aided industrial product modeling adhering strictly to international engineering benchmarks.</p>
-          <h4>Functionality Designing</h4>
-          <p>Comprehensive structural analysis, ergonomic research, and usability engineering to seamlessly blend form with operational performance for hardware and digital solutions alike.</p>
         </div>
       </section>
 
-      <section className="custom" aria-label="Custom Engineering">
-        <h2>Bespoke Solutions & Custom Engineering</h2>
-        <p>At Sri Nav Tech Private Limited, we understand that unique business challenges require bespoke solutions. Beyond our listed capabilities, all services can be fully customized, scaled, or co-engineered to meet your precise technical requirements and business objectives. Speak with our consulting architects to draft an engagement framework customized to your timeline and scope.</p>
-      </section>
-
-      <footer className="footer">
-        <h3>Sri Nav Tech Private Limited</h3>
-        <p>Corporate Headquarters & Service Operations Hub, Gujarat, India</p>
-        <p className="tagline">Delivering Innovation, Building Excellence</p>
+      {/* ===== FOOTER ===== */}
+      <footer style={{ background: "#0f172a", color: "#94a3b8", padding: "3rem 5%", textAlign: "center" }}>
+        <h3 style={{ color: "white", marginBottom: "0.5rem", fontSize: "1.2rem" }}>Sri Nav Tech Private Limited</h3>
+        <p style={{ marginBottom: "1rem" }}>Corporate Headquarters & Service Operations Hub, Gujarat, India</p>
+        <p style={{ fontSize: "0.9rem", fontStyle: "italic", color: "#3b82f6" }}>Delivering Innovation, Building Excellence</p>
       </footer>
     </div>
   );
