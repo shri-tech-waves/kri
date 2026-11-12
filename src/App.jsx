@@ -7,7 +7,7 @@ import Contact from "./pages/Contact";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import "./App.css";
-
+import Downloads from "./pages/Downloads";
 function App() {
   return (
     <BrowserRouter>
@@ -29,6 +29,7 @@ function App() {
         <Route path="/contact" element={<Contact title="Contact Us" />} />
         <Route path="/forgot-password" element={<ForgotPassword title="Forgot Password" />} />
         <Route path="/reset-password/:id" element={<ResetPassword title="Reset Password" />} />
+        <Route path="/downloads" element={<Downloads title="Downloads" />} />
       </Routes>
     </BrowserRouter>
   );

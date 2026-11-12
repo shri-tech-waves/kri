@@ -40,7 +40,7 @@ export default function Navbar() {
       <div style={{ display: "flex", gap: "2rem", alignItems: "center", fontWeight: "500", fontSize: "0.95rem" }}>
         <Link to="/" style={{ color: "#475569", textDecoration: "none" }}>Home</Link>
         <Link to="/contact" style={{ color: "#475569", textDecoration: "none" }}>Contact Us</Link>
-        
+<Link to="/downloads" style={{ color: "#475569", textDecoration: "none" }}>Downloads</Link>        
         {isLoggedIn ? (
           <button 
             onClick={handleLogout}
